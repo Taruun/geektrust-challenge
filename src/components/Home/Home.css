@@ -1,0 +1,12 @@
+.footer {
+  margin: 2rem 0 2rem 0;
+  width: 80vw;
+  display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center; /* Center items when in column layout */
+  }
+}
