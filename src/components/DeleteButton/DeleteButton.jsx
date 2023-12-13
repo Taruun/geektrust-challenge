@@ -4,7 +4,7 @@ export default function DeleteButton({ dispatch }) {
     dispatch({ type: "DELETE_SELECTED_ROWS" });
   }
   return (
-    <button className="delete-btn" onClick={handleDeleteRows}>
+    <button className="delete-button" onClick={handleDeleteRows}>
       Delete Selected
     </button>
   );

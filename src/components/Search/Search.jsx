@@ -1,15 +1,18 @@
+import React from "react";
 import "./Search.css";
+
 export default function Search({ dispatch }) {
-  function handleInputChange(e) {
+  const handleInputChange = (e) => {
     const searchQuery = e.target.value;
     dispatch({ type: "FILTER_USERS", payload: searchQuery });
-  }
+  };
+
   return (
     <div className="search-box">
       <input
         className="search-input"
         type="text"
-        placeholder="Search by name, email or role"
+        placeholder="Search by name, email, or role"
         onChange={handleInputChange}
       />
     </div>

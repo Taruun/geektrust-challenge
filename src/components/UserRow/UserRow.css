@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-around;
 }
+
 .user-btn {
   background: none;
   border: none;
@@ -9,16 +10,18 @@
   font-size: 1.3rem;
 }
 
-.user-action {
+.user-action,
+.user-select {
   padding: 8px;
   font-size: 1rem;
   border: lightgray 0.5px solid;
+  margin: 0; /* Ensure no default margin */
+  width: 100%; /* Make the inputs fill the available space */
+  box-sizing: border-box; /* Include padding and border in width calculation */
 }
 
 .user-select {
-  padding: 8px;
   background-color: white;
-  border: lightgray 0.5px solid;
 }
 
 .selected-row {
@@ -31,4 +34,12 @@
 
 .save {
   color: green;
+}
+
+@media only screen and (max-width: 768px) {
+  .user-action,
+  .user-select {
+    padding: 10px;
+    font-size: 1rem;
+  }
 }

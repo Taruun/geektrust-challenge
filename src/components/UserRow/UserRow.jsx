@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { AiOutlineEdit, AiOutlineCheck, AiOutlineDelete } from "react-icons/ai";
 import "./UserRow.css";
 
@@ -9,11 +9,11 @@ export default function UserRow({ user, state, dispatch }) {
   const [editedEmail, setEditedEmail] = useState(user.email);
   const [editedRole, setEditedRole] = useState(user.role);
 
-  function handleSelectRow(rowId) {
+  const handleSelectRow = (rowId) => {
     dispatch({ type: "SELECT_ROW", payload: { selectedRowId: rowId } });
-  }
+  };
 
-  function handleEditRow(rowData) {
+  const handleEditRow = (rowData) => {
     const isRowEditing = Object.values(isEditing).includes(true);
 
     if (isRowEditing) {
@@ -21,9 +21,9 @@ export default function UserRow({ user, state, dispatch }) {
     } else {
       dispatch({ type: "EDIT_ROW", payload: rowData });
     }
-  }
+  };
 
-  function handleSaveRow() {
+  const handleSaveRow = () => {
     if (editedName.trim() === "" || editedEmail.trim() === "") {
       alert("Name and email can't be empty.");
       return;
@@ -36,11 +36,11 @@ export default function UserRow({ user, state, dispatch }) {
       role: editedRole,
     };
     dispatch({ type: "SAVE_EDITED_ROW", payload: editedUserData });
-  }
+  };
 
-  function handleDeleteRow(rowId) {
+  const handleDeleteRow = (rowId) => {
     dispatch({ type: "DELETE_ROW", payload: rowId });
-  }
+  };
 
   const isSelected = selectedRows.includes(user.id);
 
@@ -108,7 +108,7 @@ export default function UserRow({ user, state, dispatch }) {
             </button>
           ) : (
             <button
-              className="user-btn create"
+              className="user-btn edit"
               onClick={() => handleEditRow(user)}
             >
               <AiOutlineEdit />

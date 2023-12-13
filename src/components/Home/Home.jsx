@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import "./Home.css";
 import Pagination from "../Pagination/Pagination";
 import Search from "../Search/Search";
@@ -13,10 +13,14 @@ export default function Home() {
   const [state, dispatch] = useReducer(userReducer, initialState);
 
   useEffect(() => {
-    fetchUsers();
+    fetchData();
   }, []);
 
-  async function fetchUsers() {
+  useEffect(() => {
+    updateTotalItems();
+  }, [state.filteredUsers]);
+
+  async function fetchData() {
     try {
       const response = await fetch(URL);
       if (!response.ok) {
@@ -26,14 +30,18 @@ export default function Home() {
       const data = await response.json();
       dispatch({ type: "SET_USERS", payload: data });
     } catch (err) {
-      console.error("Error fetching users:", err);
+      handleFetchError(err);
     }
   }
 
-  useEffect(() => {
+  function handleFetchError(err) {
+    console.error("Error fetching users:", err);
+  }
+
+  function updateTotalItems() {
     const totalItems = state.filteredUsers.length;
     dispatch({ type: "SET_TOTAL_ITEMS", payload: totalItems });
-  }, [state.filteredUsers]);
+  }
 
   return (
     <div>

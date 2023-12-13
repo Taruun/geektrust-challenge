@@ -15,7 +15,7 @@ export default function Pagination({ itemsPerPage, state, dispatch }) {
     dispatch({ type: "SET_CURRENT_PAGE", payload: page });
   }
 
-  function renderPaginationButtons() {
+  function generatePaginationButtons() {
     const pageButtons = [];
 
     pageButtons.push(
@@ -73,5 +73,5 @@ export default function Pagination({ itemsPerPage, state, dispatch }) {
     return pageButtons;
   }
 
-  return <div className="pagination">{renderPaginationButtons()}</div>;
+  return <div className="pagination">{generatePaginationButtons()}</div>;
 }

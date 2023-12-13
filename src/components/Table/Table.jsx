@@ -1,3 +1,4 @@
+import React from "react";
 import UserRow from "../UserRow/UserRow";
 import "./Table.css";
 
@@ -8,12 +9,12 @@ export default function Table({ itemsPerPage, state, dispatch }) {
   const endIndex = startIndex + itemsPerPage;
   const visibleUsers = filteredUsers.slice(startIndex, endIndex);
 
-  function handleSelectAll() {
+  const handleSelectAll = () => {
     dispatch({ type: "SELECT_ALL_ROWS" });
-  }
+  };
 
   return (
-    <>
+    <div className="table-container">
       <table className="table">
         <thead className="table-title">
           <tr>
@@ -41,6 +42,6 @@ export default function Table({ itemsPerPage, state, dispatch }) {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }

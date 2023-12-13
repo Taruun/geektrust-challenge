@@ -11,4 +11,9 @@
   border: lightgray 0.5px solid;
   outline: none;
   padding-left: 1rem;
+  font-size: 1rem;
+  @media only screen and (max-width: 768px) {
+    padding: 10px;
+    font-size: 1rem;
+  }
 }

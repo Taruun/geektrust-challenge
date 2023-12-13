@@ -55,3 +55,12 @@ td {
     border: none;
   }
 }
+@media only screen and (max-width: 768px) {
+  th,
+  td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+  }
+}
